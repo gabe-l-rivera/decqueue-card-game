@@ -20,7 +20,7 @@ void insertFront(struct Node** head, int data){
     newNode->data = data;  // set data
     newNode->next = (*head); // set next pointer to point to head
     newNode->prev = NULL; // set prev pointer to point to NULL
-    
+	
     if ((*head) != NULL)    // change prev pointer of head node to new node
         (*head)->prev = newNode;
     (*head) = newNode; // set the head to point to the new node
@@ -38,12 +38,10 @@ void removeKthNodeFromEnd(struct Node** head, int k){
         secondNode = secondNode->next;
         count += 1;
     }
-    
     if(secondNode == NULL){
         pseudoHead->data = pseudoHead->next->data;
         pseudoHead->next = pseudoHead->next->next;
-    }
-    
+    }   
     while(secondNode->next != NULL){
         secondNode = secondNode->next;
         firstNode = firstNode->next;
@@ -56,16 +54,12 @@ void removeFromPile(struct Node** head, struct Node* nodeToDelete){
     // Return: void, mutates the list by deleting the node from the list
     if (*head == NULL || nodeToDelete == NULL)
         return;
-    
     if (*head ==nodeToDelete)
         *head = nodeToDelete->next;
-    
     if (nodeToDelete->next != NULL)
         nodeToDelete->next->prev = nodeToDelete->prev;
-    
     if (nodeToDelete->prev != NULL)
         nodeToDelete->prev->next = nodeToDelete->next;
-    
     free(nodeToDelete);
     return;
 }
@@ -80,7 +74,6 @@ void displayPile(struct Node* node){
         node = node->next;
     }
     printf("\n");
-    
 }
 
 void dealCards(struct Node** pile, int numCards){
@@ -239,7 +232,6 @@ void dieRollChecker(int nSidedRollFirst, int nSidedRollSecond, int twoSidedRoll,
 	}
 }
 
-
 int main(int argc, char *argv[]){
 
     int numberOfPlayers = atoi(argv[1]);
@@ -283,7 +275,6 @@ int main(int argc, char *argv[]){
 		weightArray[i] = getWeight(&pile[i]);
 		printf("\tPlayer %d weight: %d\n", i, getWeight(&pile[i]));
 	}
-
 	printf("\n");
    	
 	if(turns == 0){
@@ -291,7 +282,6 @@ int main(int argc, char *argv[]){
     	}
 		
     }
-
     printf("---------- FINAL PILES ----------\n");
     for(int i = 1; i <= numberOfPlayers; i++){   // display cards
         printf("\n ---------------- \n Player Pile %d:\n ---------------- \n", i);
